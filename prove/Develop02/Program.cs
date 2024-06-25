@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
- class Program
+
+namespace JournalApp
+{
+    class Program
     {
         static void Main(string[] args)
         {
             Journal journal = new Journal();
             while (true)
             {
-                Console.WriteLine("Menu:");
+                Console.WriteLine("Journal Menu:");
                 Console.WriteLine("1. Write a new entry");
                 Console.WriteLine("2. Display the journal");
                 Console.WriteLine("3. Save the journal to a file");
@@ -20,27 +23,28 @@ using System.IO;
                 switch (choice)
                 {
                     case "1":
-                        journal.WriteNewEntry();
+                        journal.WriteEntry();
                         break;
                     case "2":
-                        journal.DisplayJournal();
+                        journal.DisplayEntries();
                         break;
                     case "3":
-                        Console.Write("Enter filename to save: ");
+                        Console.Write("Enter the filename to save the journal: ");
                         string saveFilename = Console.ReadLine();
-                        journal.SaveJournalToFile(saveFilename);
+                        journal.SaveToFile(saveFilename);
                         break;
                     case "4":
-                        Console.Write("Enter filename to load: ");
+                        Console.Write("Enter the filename to load the journal: ");
                         string loadFilename = Console.ReadLine();
-                        journal.LoadJournalFromFile(loadFilename);
+                        journal.LoadFromFile(loadFilename);
                         break;
                     case "5":
                         return;
                     default:
-                        Console.WriteLine("Invalid choice. Please try again.");
+                        Console.WriteLine("Invalid choice. Please choose again.");
                         break;
                 }
             }
         }
     }
+}
